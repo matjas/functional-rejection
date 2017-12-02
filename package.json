@@ -1,0 +1,24 @@
+{
+  "name": "functional-rejection",
+  "version": "1.0.0",
+  "description": "Rejection example inspired by Eric Elliott. Application example written using functional paradigm.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rejection"
+  ],
+  "author": "Maciej Jaskuła",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "file-loader": "^0.11.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
