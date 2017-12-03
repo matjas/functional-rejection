@@ -14,7 +14,13 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1"
+    "flyd": "^0.2.4",
+    "flyd-forwardto": "0.0.2",
+    "log4js": "^2.3.12",
+    "ramda": "^0.25.0",
+    "ryter": "0.0.1",
+    "snabbdom": "^0.7.0",
+    "union-type": "^0.4.1"
   },
   "devDependencies": {
     "file-loader": "^0.11.1",

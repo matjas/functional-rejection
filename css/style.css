@@ -1,0 +1,7 @@
+section {
+    margin: 20px 0;
+}
+#score p{
+    font-size: 18px;
+    font-weight:bold;
+}
