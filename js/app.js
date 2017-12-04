@@ -20,7 +20,7 @@ const h = require('snabbdom/h').default;
 const targetValue = require('./helpers/targetvalue');
 const ifEnter = require('./helpers/ifenter');
 
-//const Points = require('./points')
+const Points = require('./points')
 
 //Model
 const init = () => ({
@@ -47,36 +47,34 @@ const MyRouter = Router.init({
 const update = Action.caseOn({
     ChangePage: MyRouter.Action.caseOn({
         ViewMain: (_, model) => R.assoc('view', 'main', model)
-    })
-    // UpdatePoints: (points, action, model) => {
-    //     return R.evolve({})
-    // }
+    }),
+    UpdatePoints: (points, action, model) => {
+        return '4'
+    }
 })
 
 // View
-// const viewPoints = R.curry((action$, points) => {
-//     return Points.view({
-//         action$: forwardTo(action$, Action.UpdatePoints(points))
-//     }, points)
-// })
+const viewPoints = (action$, points) => {
+    return Points.view({
+        action$: forwardTo(action$, Action.UpdatePoints(points))
+    }, points)
+}
 
-const vNode = h('div.row', {},[
-        h('section#score')
-    ]);
-
-// const view = R.curry((action$, model) => {
-//     h('div.row', {}, [
-//         h('section#score')
-//     ]),
-//     h('div.row', {}, [
-//         h('section#forms')
-//     ]),
-//     h('div.row', {},[
-//         h('section#answer-list',[
-//             h('ul.list-group')
-//         ])
-//     ])
-// })
+const view = R.curry((action$, model) => {
+    return h('div', {},[
+      h('div.row', {}, [
+        h('section#score', viewPoints(action$, '44'))
+      ]),
+      h('div.row', {}, [
+          h('section#forms')
+      ]),
+      h('div.row', {},[
+          h('section#answer-list',[
+              h('ul.list-group')
+          ])
+      ])
+    ])
+})
   
   // Persistence
   const restoreState = () => {
@@ -93,15 +91,15 @@ const vNode = h('div.row', {},[
 const action$ = flyd.merge(MyRouter.stream, flyd.stream());
 console.log(action$);
 const model$ = flyd.scan(R.flip(update), restoreState(), action$)
-console.log(model$)
-//const vnode$ = flyd.map(view(action$), model$)
-//console.log(vnode$);
+console.log(JSON.stringify(model$()))
+const vnode$ = flyd.map(view(action$), model$)
+console.log(JSON.stringify(vnode$()));
 //const = 
 
 window.addEventListener('DOMContentLoaded', function() {
     const appContainer = document.querySelector('.appContainer');
     console.log(appContainer);
-    //flyd.scan(patch, appContainer, vNode)
-    patch(appContainer, vNode)
+    flyd.scan(patch, appContainer, vnode$)
+    //patch(appContainer, vNode)
 });
 

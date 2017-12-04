@@ -17,16 +17,14 @@ const Action = Type({
 
 //Update
 const update = Action.caseOn({ //action -> model -> model
-    ChangePoints: R.assoc('title')
+    ChangePoints: R.assoc('points')
 })
 
 //View
 const view = R.curry((context, model) =>
-    h('div', {
-        class: 'col-sm-12 text-center'
-    }, [
+    h('div.col-sm-12.text-center', [
         h('p', 'Score'),
-        h('p#totalScore',{}, model.points)
+        h('p#totalScore', model.points)
     ])
 )
 
