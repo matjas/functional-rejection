@@ -3,6 +3,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const StatsGraphPlugin = require('./StatsGraphPlugin');
 
 
 module.exports = function (env) {
@@ -30,7 +31,8 @@ module.exports = function (env) {
             new webpack.DefinePlugin({
                 ENV_IS_DEVELOPMENT: isDevelopment,
                 ENV_IS: JSON.stringify(env)
-            })
+            }),
+            new StatsGraphPlugin()
         ]
     };
     
