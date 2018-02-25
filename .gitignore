@@ -1,2 +1,5 @@
 /node_modules
 /.idea
+/statsgraph
+stats.json
+/dist
