@@ -80,8 +80,10 @@ const update = Action.caseOn({
         }, model)
     },
     Remove: (question, model) => {
-        console.log(R.subtract(model.points, question.score));
-        console.log(model.points, question.score);
+        if(ENV_IS_DEVELOPMENT) {
+            console.log(R.subtract(model.points, question.score));
+            console.log(model.points, question.score);
+        }
         return R.evolve({ 
             points: R.always(R.subtract(model.points, question.score)),
             questions: R.reject(R.equals(question))

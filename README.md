@@ -18,4 +18,5 @@ The game has **one** rule:
 ## How to run
 
 1. install node packages: npm install
-2. run application: npm run dev
+2. run application in development mode: npm start
+   build: npm run build

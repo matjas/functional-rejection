@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --env production",
+    "start": "nodemon -w webpack.config.js -x webpack-dev-server -- --env development"
   },
   "keywords": [
     "rejection"
@@ -23,8 +25,13 @@
     "union-type": "^0.4.1"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.18",
     "file-loader": "^0.11.1",
+    "nodemon": "^1.15.1",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "path": "^0.12.7",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.2"
   }
 }
