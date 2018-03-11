@@ -1,6 +1,3 @@
-/**
- * Created by maciejjaskula on 03.12.2017.
- */
 'use strict';
 const R = require('ramda');
 const flyd = require('flyd');

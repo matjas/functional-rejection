@@ -4,6 +4,8 @@ const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const StatsGraphPlugin = require('./StatsGraphPlugin');
+const babelLoader = require('./babelLoader');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
 module.exports = function (env) {
@@ -60,6 +62,10 @@ module.exports = function (env) {
             }
         )
     } else {
-        return merge(baseConfig, {});
+        return merge(baseConfig, babelLoader, {
+            plugins: [
+                new UglifyJsPlugin()
+            ]
+        });
     }
 };
